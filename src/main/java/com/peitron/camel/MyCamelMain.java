@@ -13,7 +13,7 @@ public class MyCamelMain extends org.apache.camel.main.Main {
         // get the spring bean in Beans.xml
         final org.apache.camel.impl.DefaultCamelContext camelContext = new org.apache.camel.spring.SpringCamelContext(
                 new org.springframework.context.support.ClassPathXmlApplicationContext(
-                        "/Beans.xml"));
+                        "META-INF.spring/camel-context.xml"));
         //give a context name
         camelContext.setName("retest");
 

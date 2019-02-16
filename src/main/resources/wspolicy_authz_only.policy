@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsp:Policy xmlns:wsp="http://www.w3.org/ns/ws-policy" Name="wspolicy_authz_only">
+    <wsp:ExactlyOne>
+        <wsp:All>
+            <tpa:Authorization xmlns:tpa="http://types.talend.com/policy/assertion/1.0" type="XACML" /> 
+        </wsp:All>
+    </wsp:ExactlyOne>
+</wsp:Policy>

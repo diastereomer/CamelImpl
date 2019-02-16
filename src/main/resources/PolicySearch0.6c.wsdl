@@ -1,0 +1,291 @@
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://claimcenter.msigusa.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://cxf.apache.org/bindings/xformat" name="PolicySearch" targetNamespace="http://claimcenter.msigusa.com/">
+	<wsdl:documentation>
+	version 0.6c
+	</wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://claimcenter.msigusa.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:ns1="http://cxf.apache.org/bindings/xformat" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://claimcenter.msigusa.com/">
+			<xsd:element name="searchPoliciesbyInsuredRequest" type="tns:searchPoliciesbyInsuredRequest"/>
+			<xsd:element name="searchPoliciesbyInsuredResponse" nillable="true" type="tns:searchPoliciesbyInsuredResponse"/>
+			<xsd:element name="getPolicyLocationsRequest" type="tns:getPolicyLocationsRequest"/>
+			<xsd:element name="getPolicyLocationsResponse" nillable="true" type="tns:getPolicyLocationsResponse"/>
+			<xsd:element name="getPolicyCoveragesRequest" type="tns:getPolicyCoveragesRequest"/>
+			<xsd:element name="getPolicyCoveragesResponse" nillable="true" type="tns:getPolicyCoveragesResponse"/>
+			<xsd:element name="getPolicyLimitsRequest" type="tns:getPolicyLimitsRequest"/>
+			<xsd:element name="getPolicyLimitsResponse" nillable="true" type="tns:getPolicyLimitsResponse"/>
+			<xsd:complexType name="searchPoliciesbyInsuredRequest">
+				<xsd:sequence>
+					<xsd:element name="AccidentDate" type="xsd:decimal"/>
+					<xsd:element name="PolicyEffDate" type="xsd:decimal"/>
+					<xsd:element name="Insured" type="xsd:string"/>
+					<xsd:element name="ProductCode" type="xsd:string"/>
+					<xsd:element name="UnderwritingCompany" type="xsd:string"/>
+					<xsd:element name="EndorsementDate" type="xsd:decimal"/>
+					<xsd:element name="EndorsementNumber" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getPolicyLocationsRequest">
+				<xsd:sequence>
+					<xsd:element name="AccidentDate" type="xsd:decimal"/>
+					<xsd:element name="UnderwritingCompany" type="xsd:string"/>
+					<xsd:element name="PolicyEffDate" type="xsd:decimal"/>
+					<xsd:element name="PolicyNumber" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getPolicyCoveragesRequest">
+				<xsd:sequence>
+					<xsd:element name="AccidentDate" type="xsd:decimal"/>
+					<xsd:element name="BuildingNumber" type="xsd:string"/>
+					<xsd:element name="UnderwritingCompany" type="xsd:string"/>
+					<xsd:element name="CoverageGroup" type="xsd:string"/>
+					<xsd:element name="PolicyEffDate" type="xsd:decimal"/>
+					<xsd:element name="LocationNumber" type="xsd:string"/>
+					<xsd:element name="PolicyNumber" type="xsd:string"/>
+					<xsd:element name="EndorsementDate" type="xsd:decimal"/>
+					<xsd:element name="EndorsementNumber" type="xsd:string"/>
+					<xsd:element name="PremiumState" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getPolicyLimitsRequest">
+				<xsd:sequence>
+					<xsd:element name="AccidentDate" type="xsd:decimal"/>
+					<xsd:element name="BuildingNumber" type="xsd:string"/>
+					<xsd:element name="UnderwritingCompany" type="xsd:string"/>
+					<xsd:element name="CoverageGroup" type="xsd:string"/>
+					<xsd:element name="PolicyEffDate" type="xsd:decimal"/>
+					<xsd:element name="LocationNumber" type="xsd:string"/>
+					<xsd:element name="PolicyNumber" type="xsd:string"/>
+					<xsd:element name="EndorsementDate" type="xsd:decimal"/>
+					<xsd:element name="EndorsementNumber" type="xsd:string"/>
+					<xsd:element name="PremiumState" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="searchPoliciesbyInsuredResponse">
+				<xsd:sequence>
+					<xsd:element name="Policies" type="tns:policyCollection"/>
+					<xsd:element name="Message" type="tns:message"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getPolicyLocationsResponse">
+				<xsd:sequence>
+					<xsd:element name="PolicyHeader" type="tns:policyHeader"/>
+					<xsd:element name="Locations" type="tns:locationCollection"/>
+					<xsd:element name="Message" type="tns:message"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getPolicyCoveragesResponse">
+				<xsd:sequence>
+					<xsd:element name="Locations" type="tns:locationCollection"/>
+					<xsd:element name="Coverages" type="tns:coverageCollection"/>
+					<xsd:element name="Message" type="tns:message"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="getPolicyLimitsResponse">
+				<xsd:sequence>
+					<xsd:element name="Locations" type="tns:locationCollection"/>
+					<xsd:element name="LimitDetails" type="tns:limitDetailCollection"/>
+					<xsd:element name="Message" type="tns:message"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="policyCollection">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" name="Policy" type="tns:policy"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="locationCollection">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" name="Location" type="tns:location"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="coverageCollection">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" name="Coverage" type="tns:coverage"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="coverage">
+				<xsd:sequence>
+					<xsd:element name="ASLOB" type="xsd:string"/>
+					<xsd:element name="BuildingNumber" type="xsd:string"/>
+					<xsd:element name="LocationDescription" type="xsd:string"/>
+					<xsd:element name="Class" type="xsd:string"/>
+					<xsd:element name="ClassDescription" type="xsd:string"/>
+					<xsd:element name="CoverageGroup" type="xsd:string"/>
+					<xsd:element name="InternalCoverageCode" type="xsd:string"/>
+					<xsd:element name="LocationNumber" type="xsd:string"/>
+					<xsd:element name="Subline" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="policy">
+				<xsd:sequence>
+					<xsd:element name="AccountNumber" type="xsd:string"/>
+					<xsd:element name="Agent" type="xsd:string"/>
+					<xsd:element name="AgentType" type="xsd:string"/>
+					<xsd:element name="CLMFLD" type="xsd:string"/>
+					<xsd:element name="UnderwritingCompany" type="xsd:string"/>
+					<xsd:element name="EndorsementDate" type="xsd:decimal"/>
+					<xsd:element name="EndorsementNumber" type="xsd:decimal"/>
+					<xsd:element name="PolicyEffDate" type="xsd:decimal"/>
+					<xsd:element name="InsuredName" type="xsd:string"/>
+					<xsd:element name="PolicyNumber" type="xsd:string"/>
+					<xsd:element name="ProductCode" type="xsd:string"/>
+					<xsd:element name="Status" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="limitDetailCollection">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" name="LimitDetail" type="tns:limitDetail"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="limitDetail">
+				<xsd:sequence>
+					<xsd:element name="Limits" type="tns:limitCollection"/>
+					<xsd:element name="LITERL_1" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="limitCollection">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" name="Limit" type="tns:limit"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="limit">
+				<xsd:sequence>
+					<xsd:element name="PolicyOrLocation" type="xsd:string"/>
+					<xsd:element name="LimitValue" type="xsd:string"/>
+					<xsd:element name="LimitName" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="location">
+				<xsd:sequence>
+					<xsd:element name="BuildingNumber" type="xsd:string"/>
+					<xsd:element name="LocationDescription" type="xsd:string"/>
+					<xsd:element name="CoverageGroup" type="xsd:string"/>
+					<xsd:element name="LocationNumber" type="xsd:string"/>
+					<xsd:element name="PrimiumState" type="xsd:string"/>
+					<xsd:element name="Territory" type="xsd:string"/>
+					<xsd:element name="VehicleID" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="message">
+				<xsd:sequence>
+					<xsd:element name="Descriptions" type="tns:descriptions"/>
+					<xsd:element name="SuccessFlag" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="descriptions">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" name="Description" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="policyHeader">
+				<xsd:sequence>
+					<xsd:element name="AccountNumber" type="xsd:string"/>
+					<xsd:element name="Agent" type="xsd:string"/>
+					<xsd:element name="UnderwritingCompany" type="xsd:string"/>
+					<xsd:element name="DirectOrAssumed" type="xsd:string"/>
+					<xsd:element name="EndorsementNumber" type="xsd:decimal"/>
+					<xsd:element name="PolicyEffDate" type="xsd:decimal"/>
+					<xsd:element name="PolicyExpDate" type="xsd:decimal"/>
+					<xsd:element name="SpecialHandling" type="xsd:string"/>
+					<xsd:element name="FlatCommission" type="xsd:string"/>
+					<xsd:element name="InsuredAddress1" type="xsd:string"/>
+					<xsd:element name="InsuredAddress2" type="xsd:string"/>
+					<xsd:element name="InsuredCity" type="xsd:string"/>
+					<xsd:element name="InsuredName" type="xsd:string"/>
+					<xsd:element name="InsuredState" type="xsd:string"/>
+					<xsd:element name="InsuredType" type="xsd:string"/>
+					<xsd:element name="InsuredZIP" type="xsd:string"/>
+					<xsd:element name="OriginalPolicyYear" type="xsd:string"/>
+					<xsd:element name="PolicyNumber" type="xsd:string"/>
+					<xsd:element name="ProductCode" type="xsd:string"/>
+					<xsd:element name="ReinsuranceFlag" type="xsd:string"/>
+					<xsd:element name="UserLocation" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="getPolicyLocationsResponse">
+		<wsdl:part element="tns:getPolicyLocationsResponse" name="result"/>
+	</wsdl:message>
+	<wsdl:message name="getPolicyLocations">
+		<wsdl:part element="tns:getPolicyLocationsRequest" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="searchPoliciesbyInsuredResponse">
+		<wsdl:part element="tns:searchPoliciesbyInsuredResponse" name="result"/>
+	</wsdl:message>
+	<wsdl:message name="searchPoliciesbyInsured">
+		<wsdl:part element="tns:searchPoliciesbyInsuredRequest" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="getPolicyLimitsResponse">
+		<wsdl:part element="tns:getPolicyLimitsResponse" name="result"/>
+	</wsdl:message>
+	<wsdl:message name="getPolicyLimits">
+		<wsdl:part element="tns:getPolicyLimitsRequest" name="parameters"/>
+	</wsdl:message>
+	<wsdl:message name="getPolicyCoveragesResponse">
+		<wsdl:part element="tns:getPolicyCoveragesResponse" name="result"/>
+	</wsdl:message>
+	<wsdl:message name="getPolicyCoverages">
+		<wsdl:part element="tns:getPolicyCoveragesRequest" name="parameters"/>
+	</wsdl:message>
+	<wsdl:portType name="policySearchWebService">
+		<wsdl:operation name="getPolicyLocations">
+			<wsdl:input message="tns:getPolicyLocations" name="getPolicyLocations"/>
+			<wsdl:output message="tns:getPolicyLocationsResponse" name="getPolicyLocationsResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="searchPoliciesbyInsured">
+			<wsdl:input message="tns:searchPoliciesbyInsured" name="searchPoliciesbyInsured"/>
+			<wsdl:output message="tns:searchPoliciesbyInsuredResponse" name="searchPoliciesbyInsuredResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPolicyLimits">
+			<wsdl:input message="tns:getPolicyLimits" name="getPolicyLimits"/>
+			<wsdl:output message="tns:getPolicyLimitsResponse" name="getPolicyLimitsResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getPolicyCoverages">
+			<wsdl:input message="tns:getPolicyCoverages" name="getPolicyCoverages"/>
+			<wsdl:output message="tns:getPolicyCoveragesResponse" name="getPolicyCoveragesResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="policySearchWebServiceImplServiceSoapBinding" type="tns:policySearchWebService">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="getPolicyLocations">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="getPolicyLocations">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getPolicyLocationsResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="searchPoliciesbyInsured">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="searchPoliciesbyInsured">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="searchPoliciesbyInsuredResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPolicyLimits">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="getPolicyLimits">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getPolicyLimitsResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getPolicyCoverages">
+			<soap:operation soapAction="" style="document"/>
+			<wsdl:input name="getPolicyCoverages">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="getPolicyCoveragesResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="policySearchWebServiceImplService">
+		<wsdl:port binding="tns:policySearchWebServiceImplServiceSoapBinding" name="policySearchWebServiceImplPort">
+			<soap:address location="http://war2k12devesb:8040/services/policysearch"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

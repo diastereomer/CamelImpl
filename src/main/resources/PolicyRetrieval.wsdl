@@ -1,0 +1,201 @@
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://wins_policy_search.wsbeans.iseries/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="WINS_Policy_Search" targetNamespace="http://wins_policy_search.wsbeans.iseries/">
+    <types>
+        <xs:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://wins_policy_search.wsbeans.iseries/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://wins_policy_search.wsbeans.iseries/" version="1.0">
+            <xs:element name="cwrappiws1" type="tns:cwrappiws1"/>
+            <xs:element name="cwrappiws1Response" type="tns:cwrappiws1Response"/>
+            <xs:complexType name="cwrappiws1">
+                <xs:sequence>
+                    <xs:element name="arg0" type="tns:cwrappiws1Input"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="cwrappiws1Input">
+                <xs:sequence>
+                    <xs:element name="POLICY_RETRIVAL_LINKAGE" type="tns:policyRETRIVALLINKAGE"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGE">
+                <xs:sequence>
+                    <xs:element name="REQUEST_DETAILS" type="tns:policyRETRIVALLINKAGEREQUESTDETAILS"/>
+                    <xs:element name="RESPONSE_DETAILS" type="tns:policyRETRIVALLINKAGERESPONSEDETAILS"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGEREQUESTDETAILS">
+                <xs:sequence>
+                    <xs:element name="ACCDTE" type="xs:decimal"/>
+                    <xs:element name="BLDNUM" type="xs:string"/>
+                    <xs:element name="CO" type="xs:string"/>
+                    <xs:element name="COVERG" type="xs:string"/>
+                    <xs:element name="EDSDTE" type="xs:decimal"/>
+                    <xs:element name="EDSNO" type="xs:string"/>
+                    <xs:element name="EFFDTE" type="xs:decimal"/>
+                    <xs:element name="INSNAM" type="xs:string"/>
+                    <xs:element name="LOCNUM" type="xs:string"/>
+                    <xs:element name="POLICY" type="xs:string"/>
+                    <xs:element name="PRMSTE" type="xs:string"/>
+                    <xs:element name="PROD" type="xs:string"/>
+                    <xs:element name="REQID" type="xs:string"/>
+                    <xs:element name="REQTYP" type="xs:string"/>
+                    <xs:element name="USER" type="xs:string"/>
+                    <xs:element name="_filler_1" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILS">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="ADD_INSURED" type="tns:policyRETRIVALLINKAGERESPONSEDETAILSADDINSURED"/>
+                    <xs:element maxOccurs="unbounded" name="COVERAGE_DETAILS" type="tns:policyRETRIVALLINKAGERESPONSEDETAILSCOVERAGEDETAILS"/>
+                    <xs:element maxOccurs="unbounded" name="INSURED_NAME" type="tns:policyRETRIVALLINKAGERESPONSEDETAILSINSUREDNAME"/>
+                    <xs:element maxOccurs="unbounded" name="LIMITS_DETAILS" type="tns:policyRETRIVALLINKAGERESPONSEDETAILSLIMITSDETAILS"/>
+                    <xs:element maxOccurs="unbounded" name="LOCATION_DETAILS" type="tns:policyRETRIVALLINKAGERESPONSEDETAILSLOCATIONDETAILS"/>
+                    <xs:element name="MSG_DETAILS" type="tns:policyRETRIVALLINKAGERESPONSEDETAILSMSGDETAILS"/>
+                    <xs:element name="POLICY_LINKAGE" type="tns:policyRETRIVALLINKAGERESPONSEDETAILSPOLICYLINKAGE"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILSADDINSURED">
+                <xs:sequence>
+                    <xs:element name="ADNOTE" type="xs:string"/>
+                    <xs:element name="AINAD1" type="xs:string"/>
+                    <xs:element name="AINAD2" type="xs:string"/>
+                    <xs:element name="AINCTY" type="xs:string"/>
+                    <xs:element name="AINNAM" type="xs:string"/>
+                    <xs:element name="AINNUM" type="xs:string"/>
+                    <xs:element name="AINRCN" type="xs:string"/>
+                    <xs:element name="AINST" type="xs:string"/>
+                    <xs:element name="AINTEL" type="xs:string"/>
+                    <xs:element name="AINZIP" type="xs:string"/>
+                    <xs:element name="SAMEAS" type="xs:string"/>
+                    <xs:element name="THIRDF" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILSCOVERAGEDETAILS">
+                <xs:sequence>
+                    <xs:element name="ASLOB" type="xs:string"/>
+                    <xs:element name="BLDNUM" type="xs:string"/>
+                    <xs:element name="CDDESC" type="xs:string"/>
+                    <xs:element name="CLASX" type="xs:string"/>
+                    <xs:element name="CLDESC" type="xs:string"/>
+                    <xs:element name="COVERG" type="xs:string"/>
+                    <xs:element name="INTCOV" type="xs:string"/>
+                    <xs:element name="LOCNUM" type="xs:string"/>
+                    <xs:element name="SUBLN" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILSINSUREDNAME">
+                <xs:sequence>
+                    <xs:element name="ACCTNO" type="xs:string"/>
+                    <xs:element name="AGENT" type="xs:string"/>
+                    <xs:element name="AGYTYP" type="xs:string"/>
+                    <xs:element name="CLMFLD" type="xs:string"/>
+                    <xs:element name="CO" type="xs:string"/>
+                    <xs:element name="DIRASS" type="xs:string"/>
+                    <xs:element name="EDSDTE" type="xs:decimal"/>
+                    <xs:element name="EDSNO" type="xs:decimal"/>
+                    <xs:element name="EFFDTE" type="xs:decimal"/>
+                    <xs:element name="EXPDTE" type="xs:decimal"/>
+                    <xs:element name="INSAD1" type="xs:string"/>
+                    <xs:element name="INSAD2" type="xs:string"/>
+                    <xs:element name="INSCTY" type="xs:string"/>
+                    <xs:element name="INSNAM" type="xs:string"/>
+                    <xs:element name="INSST" type="xs:string"/>
+                    <xs:element name="INSZIP" type="xs:string"/>
+                    <xs:element name="POLICY" type="xs:string"/>
+                    <xs:element name="PROD" type="xs:string"/>
+                    <xs:element name="STATAS" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILSLIMITSDETAILS">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="LIMIT_LINK2" type="tns:policyRETRIVALLINKAGERESPONSEDETAILSLIMITSDETAILSLIMITLINK2"/>
+                    <xs:element name="LITERL_1" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILSLIMITSDETAILSLIMITLINK2">
+                <xs:sequence>
+                    <xs:element name="LEVEL" type="xs:string"/>
+                    <xs:element name="LIMVAL" type="xs:string"/>
+                    <xs:element name="LITERL_2" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILSLOCATIONDETAILS">
+                <xs:sequence>
+                    <xs:element name="BLDNUM" type="xs:string"/>
+                    <xs:element name="CDDESC" type="xs:string"/>
+                    <xs:element name="COVERG" type="xs:string"/>
+                    <xs:element name="LOCNUM" type="xs:string"/>
+                    <xs:element name="PRMSTE" type="xs:string"/>
+                    <xs:element name="TERR" type="xs:string"/>
+                    <xs:element name="VEHID" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILSMSGDETAILS">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="MSG_DES" type="xs:string"/>
+                    <xs:element name="SUCFLG" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="policyRETRIVALLINKAGERESPONSEDETAILSPOLICYLINKAGE">
+                <xs:sequence>
+                    <xs:element name="ACCTNO" type="xs:string"/>
+                    <xs:element name="AGENT" type="xs:string"/>
+                    <xs:element name="CO" type="xs:string"/>
+                    <xs:element name="DIRASS" type="xs:string"/>
+                    <xs:element name="EDSNO" type="xs:decimal"/>
+                    <xs:element name="EFFDTE" type="xs:decimal"/>
+                    <xs:element name="EXPDTE" type="xs:decimal"/>
+                    <xs:element name="FIELDE" type="xs:string"/>
+                    <xs:element name="FIELDF" type="xs:string"/>
+                    <xs:element name="INSAD1" type="xs:string"/>
+                    <xs:element name="INSAD2" type="xs:string"/>
+                    <xs:element name="INSCTY" type="xs:string"/>
+                    <xs:element name="INSNAM" type="xs:string"/>
+                    <xs:element name="INSST" type="xs:string"/>
+                    <xs:element name="INSTYP" type="xs:string"/>
+                    <xs:element name="INSZIP" type="xs:string"/>
+                    <xs:element name="ORPOYR" type="xs:string"/>
+                    <xs:element name="POLICY" type="xs:string"/>
+                    <xs:element name="PROD" type="xs:string"/>
+                    <xs:element name="REINFL" type="xs:string"/>
+                    <xs:element name="USELOC" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="cwrappiws1Response">
+                <xs:sequence>
+                    <xs:element name="return" type="tns:cwrappiws1Result"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="cwrappiws1Result">
+                <xs:sequence>
+                    <xs:element name="POLICY_RETRIVAL_LINKAGE" type="tns:policyRETRIVALLINKAGE"/>
+                    <xs:element name="RETCODE" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </types>
+    <message name="cwrappiws1">
+        <part element="tns:cwrappiws1" name="parameters"></part>
+    </message>
+    <message name="cwrappiws1Response">
+        <part element="tns:cwrappiws1Response" name="parameters"></part>
+    </message>
+    <portType name="WINS_Policy_SearchServices">
+        <operation name="cwrappiws1">
+            <input message="tns:cwrappiws1" wsam:Action="http://wins_policy_search.wsbeans.iseries/WINS_Policy_SearchServices/cwrappiws1Request"></input>
+            <output message="tns:cwrappiws1Response" wsam:Action="http://wins_policy_search.wsbeans.iseries/WINS_Policy_SearchServices/cwrappiws1Response"></output>
+        </operation>
+    </portType>
+    <binding name="WINS_Policy_SearchServicesPortBinding" type="tns:WINS_Policy_SearchServices">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="cwrappiws1">
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="WINS_Policy_Search">
+        <port binding="tns:WINS_Policy_SearchServicesPortBinding" name="WINS_Policy_SearchServicesPort">
+            <soap12:address location="http://as400dev:10021/web/services/WINS_Policy_SearchService/WINS_Policy_Search"/>
+        </port>
+    </service>
+</definitions>

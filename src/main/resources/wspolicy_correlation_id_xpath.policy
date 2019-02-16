@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsp:Policy Name="wspolicy_correlation_id_xpath"  xmlns:wsp="http://www.w3.org/ns/ws-policy">
+    <wsp:ExactlyOne>
+        <wsp:All>
+            <tpa:CorrelationID xmlns:tpa="http://types.talend.com/policy/assertion/1.0" type="xpath" name="order">
+                <tpa:Namespace prefix="ns2" uri="http://customerservice.example.com/" />
+                <tpa:Part name="customerFirstName" xpath="/ns2:getCustomersByName/firstname" />
+                <tpa:Part name="customerLastName"  optional="true" xpath="/ns2:getCustomersByName/lastname" />
+            </tpa:CorrelationID>
+        </wsp:All>
+    </wsp:ExactlyOne>
+</wsp:Policy>

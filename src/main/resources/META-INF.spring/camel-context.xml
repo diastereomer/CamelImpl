@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+  <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+    <property name="jndiName" value="osgi:service/stage"/>
+    <property name="defaultObject">
+      <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="net.sourceforge.jtds.jdbc.Driver"/>
+        <property name="url" value="jdbc:jtds:sqlserver://sqlservername:1433/databasename;"/>
+        <property name="username" value="john"/>
+        <property name="password" value="doe"/>
+      </bean>
+    </property>
+  </bean>
+
+  <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+
+  <bean id="PROPAGATION_REQUIRED" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+    <property name="transactionManager" ref="transactionManager"/>
+  </bean>
+
+  <bean id="PROPAGATION_REQUIRES_NEW" class="org.apache.camel.spring.spi.SpringTransactionPolicy">
+    <property name="transactionManager" ref="transactionManager"/>
+    <property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW"/>
+  </bean>
+
+  <bean id="sql" class="org.apache.camel.component.sql.SqlComponent">
+    <property name="dataSource" ref="dataSource"/>
+  </bean>
+
+  <bean id="myXsltUriResolver" class="com.peitron.camel.MyXsltUriResolver">
+  </bean>
+
+  <bean id="jmxEventNotifier" class="org.apache.camel.management.JmxNotificationEventNotifier" >
+    <property name="source" value="retest" />
+    <property name="ignoreCamelContextEvents" value="true" />
+    <property name="ignoreRouteEvents" value="true" />
+    <property name="ignoreServiceEvents" value="true" />
+    <property name="ignoreExchangeEvents" value="true" />
+  </bean>
+</beans>
